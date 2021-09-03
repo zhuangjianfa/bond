@@ -1,0 +1,43 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /
+  max-http-header-size: 64KB
+spring:
+  application:
+    name: bond
+  #spring datasource配置
+  datasource:
+    name: authDatasource
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${spring_datasource_username:root}
+    password: ${spring_datasource_password:epochn}
+    url: ${spring_datasource_url:jdbc:mysql://localhost:3306/bond?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai}
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 200
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      connection-init-sql: set names utf8mb4
+  aop:
+    auto: true
+  main:
+    allow-bean-definition-overriding: true
+mybatis-plus:
+  #mapper.xml存放路径
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    #使用日志类
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+  #表映射对象路径
+  type-aliases-package: com.echronos.mcs.model
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.owner.bond.dao.BondLogDao">
+
+    <resultMap id="BondLogMap" type="com.owner.bond.model.BondLog">
+        <result property="id" column="id"/>
+        <result property="bondCode" column="bond_code"/>
+        <result property="bondName" column="bond_name"/>
+        <result property="bondPrice" column="bond_price"/>
+        <result property="bondQuoteChange" column="bond_quote_change"/>
+        <result property="bondVolume" column="bond_volume"/>
+        <result property="bondTurnover" column="bond_turnover"/>
+        <result property="bondAmplitude" column="bond_amplitude"/>
+        <result property="bondMax" column="bond_max"/>
+        <result property="bondMin" column="bond_min"/>
+        <result property="bondOpeningPrice" column="bond_opening_price"/>
+        <result property="bondPreviousPrice" column="bond_previous_price"/>
+        <result property="bondVolumeRate" column="bond_volume_rate"/>
+        <result property="bondTurnoverRate" column="bond_turnover_rate"/>
+        <result property="bondPeRate" column="bond_pe_rate"/>
+        <result property="bondPbRate" column="bond_pb_rate"/>
+        <result property="createTime" column="create_time"/>
+        <result property="bondTime" column="bond_time"/>
+        <result property="averagePrice" column="average_price"/>
+    </resultMap>
+    
+    <sql id="columns">
+        <![CDATA[
+        id, bond_code, bond_name, bond_price, bond_quote_change, bond_volume, bond_turnover, bond_amplitude, bond_max, bond_min, bond_opening_price, bond_previous_price, bond_volume_rate, bond_turnover_rate, bond_pe_rate, bond_pb_rate, create_time, bond_time, average_price
+        ]]>
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="null!=id">
+                AND id = #{id}
+            </if>
+            <if test="null!=bondCode">
+                AND bond_code = #{bondCode}
+            </if>
+            <if test="null!=bondName and ''!=bondName">
+                AND bond_name = #{bondName}
+            </if>
+            <if test="null!=bondPrice">
+                AND bond_price = #{bondPrice}
+            </if>
+            <if test="null!=bondQuoteChange">
+                AND bond_quote_change = #{bondQuoteChange}
+            </if>
+            <if test="null!=bondVolume">
+                AND bond_volume = #{bondVolume}
+            </if>
+            <if test="null!=bondTurnover">
+                AND bond_turnover = #{bondTurnover}
+            </if>
+            <if test="null!=bondAmplitude">
+                AND bond_amplitude = #{bondAmplitude}
+            </if>
+            <if test="null!=bondMax">
+                AND bond_max = #{bondMax}
+            </if>
+            <if test="null!=bondMin">
+                AND bond_min = #{bondMin}
+            </if>
+            <if test="null!=bondOpeningPrice">
+                AND bond_opening_price = #{bondOpeningPrice}
+            </if>
+            <if test="null!=bondPreviousPrice">
+                AND bond_previous_price = #{bondPreviousPrice}
+            </if>
+            <if test="null!=bondVolumeRate">
+                AND bond_volume_rate = #{bondVolumeRate}
+            </if>
+            <if test="null!=bondTurnoverRate">
+                AND bond_turnover_rate = #{bondTurnoverRate}
+            </if>
+            <if test="null!=bondPeRate">
+                AND bond_pe_rate = #{bondPeRate}
+            </if>
+            <if test="null!=bondPbRate">
+                AND bond_pb_rate = #{bondPbRate}
+            </if>
+            <if test="null!=createTime">
+                AND create_time = #{createTime}
+            </if>
+            <if test="null!=bondTime">
+                AND bond_time = #{bondTime}
+            </if>
+            <if test="null!=averagePrice">
+                AND average_price = #{averagePrice}
+            </if>
+        </where>
+    </sql>
+</mapper>
+
